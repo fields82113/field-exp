@@ -1,0 +1,92 @@
+/* ---------- studioディレクトリ内限定仕様 ---------- */
+
+
+/* 六角形を入れるブロック */
+#hexbox {
+    width: 1440px;
+    height:720px;
+}
+
+/* 六角形の座標 */
+#link01 {
+	transform: translatex(381px) translatey(176px);
+    width: 256px;
+}
+#link02 {
+	transform: translatex(495px) translatey(116px);
+    width: 256px;
+}
+#link03 {
+	transform: translatex(723px) translatey(-140px);
+    width: 256px;
+}
+#link04 {
+	transform: translatex(837px) translatey(-592px);
+    width: 256px;
+}
+#link05 {
+	transform: translatex(723px) translatey(-1044px);
+    width: 256px;
+}
+#link06 {
+	transform: translatex(495px) translatey(-1300px);
+    width: 256px;
+}
+#link_center {
+	transform: translatex(609px) translatey(-1360px);
+    width: 256px;
+}
+
+
+/* 六角形グレーアウト */
+.hexbtn_grayout01 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 222px;
+    height: 256px;
+    background: #D9D9D9;
+    color: #FFFFFF;
+    text-align: center;
+    text-decoration: none;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+.hexbtn_grayout02 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 222px;
+    height: 256px;
+    background: #9C9C9C;
+    color: #FFFFFF;
+    opacity: 0.5;
+    text-align: center;
+    text-decoration: none;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+
+/* サムネイル */
+.thumb-container {
+    width: 340px;
+    height: 200px;
+}
+.thumb {
+    width: 320px;
+    height: 180px;
+    object-fit: cover;
+    margin: 10px;
+    border: 1px solid #000000;
+}
+
+
+
+/* ポップアップのブロック */
+.popup_content {
+    width: 550px;
+    background-color: #EEEEEE;
+    padding: 10px 30px 10px 30px;
+    border-radius: 30px;
+}

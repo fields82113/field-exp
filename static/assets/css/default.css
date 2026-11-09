@@ -1,0 +1,419 @@
+/* サブセットフォント */
+@font-face {
+    font-family: 'Corporate Logo ver3';
+    src: url('../fonts/Corporate-Logo-Medium-ver3.woff') format('woff');
+    font-display: swap;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Corporate Logo ver3';
+    src: url('../fonts/Corporate-Logo-Bold-ver3.woff') format('woff');
+    font-display: swap;
+    font-weight: 700;
+}
+
+/* ---------- デフォルトの設定 ---------- */
+
+a:not(:has(.menu-title, .menu-title_middle)) {
+    text-decoration: underline;
+    text-underline-offset: -50%;
+    text-decoration-color: #ffffff;
+    text-decoration-thickness: 9px;
+    text-decoration-skip-ink: none;   /* 半角英数字でも途切れさせない */
+    color:#0003cc;
+}
+
+a:not(:has(.menu-title, .menu-title_middle)):hover {
+    text-decoration: underline;
+    text-underline-offset: -50%;
+    text-decoration-color: #afafaf;
+    text-decoration-thickness: 9px;
+}
+
+
+
+h1 {
+    font-family: 'Corporate Logo ver3';
+    border-bottom: 6px solid #000000;
+}
+
+h2 {
+    font-family: 'Corporate Logo ver3';
+    border-bottom: 3px solid #000000;
+}
+
+h3 {
+    font-family: 'Corporate Logo ver3';
+    border-bottom: 1px solid #000000;
+}
+
+
+/* タイル（スクロール無効） */
+#tile {
+    width: 1440px;
+    height: 1024px;
+    background-color: #EEEEEE;
+    background-image: url(../../img/logo_bg_white.png);
+    background-position: left bottom;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
+}
+
+/* タイル（スクロール表示が見込まれる） */
+#tile_scroll_enable {
+    width: 1440px;
+    height: 1024px;
+    background-color: #EEEEEE;
+    background-image: url(../../img/logo_bg_white.png);
+    background-position: left bottom;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #9C9C9C transparent;
+}
+
+
+/* タイトルイメージ */
+.title_img {
+    width: 512px;
+    height: 289px;
+    background: url(../../img/field_expandar_logo_M.png) center / cover;
+    margin-left: 464px;
+    margin-right: 464px;
+}
+
+/* サブタイトル */
+.subtitile {
+    width: 360px;
+    height: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 540px;
+    margin-right: 540px;
+    color: #000000;
+    font-family: "Corporate Logo ver3";
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* サイト紹介 */
+.introduction {
+    width: 360px;
+    height: 194px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 540px;
+    margin-right: 540px;
+    color: #000000;
+    font-family: "Noto Sans JP";
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+/* ページ説明 */
+.detail {
+    width: 500px;
+    height: 150px;
+	transform: translatex(470px) translatey(0px);
+    color: #000000;
+    font-family: "Noto Sans JP";
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+
+
+/* ---------- メインコンテンツ ---------- */
+
+/* メインコンテンツブロック */
+.contents {
+    width: 1024px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 230px;
+    margin-right: 230px;
+    color: #000000;
+    font-family: "Noto Sans JP";
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1.contents_title {
+    width: 1024px;
+}
+h2.contents_title {
+    width: 1024px;
+}
+h3.contents_title {
+    width: 1024px;
+}
+
+
+
+/* ---------- 六角形 ---------- */
+
+/* 六角形の座標 */
+#menu01 {
+	transform: translatex(190px) translatey(-350px);
+    width: 256px;
+}
+#menu02 {
+	transform: translatex(360px) translatey(-256px);
+    width: 256px;
+}
+#menu03 {
+	transform: translatex(858px) translatey(-512px);
+    width: 256px;
+}
+#menu04 {
+	transform: translatex(1028px) translatey(-1118px);
+    width: 256px;
+}
+
+/* 六角形ボタン */
+.hexbtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 222px;
+    height: 256px;
+    background: #9C9C9C;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+.hex__face { clip-path: url(#hex); }
+
+
+/* 六角形リンクテキスト */
+.menu {
+    width: 206px;
+    height: 117px;
+    transform: translatex(8px) translatey(64px);
+	padding-bottom: 0px;
+    color: #FFFFFF;
+    font-family: "Corporate Logo ver3";
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+.menu-title {
+    width: 222px;
+    font-size: 48px;
+    line-height: 1.5;
+    font-family: "Corporate Logo ver3";
+    font-weight: 500;
+}
+.menu-title_middle {
+    width: 222px;
+    font-size: 40px;
+    line-height: 1.5;
+    transform: scale(1, 1.2);
+    font-family: "Corporate Logo ver3";
+    font-weight: 500;
+}
+
+.menu-sub   {
+    width: 222px;
+    font-size: 20px;
+    font-family: "Corporate Logo ver3";
+    font-weight: 500;
+}
+
+
+
+/* ---------- 各ページのヘッダー ---------- */
+
+/* ヘッダーのブロック */
+#header {
+    width: 1440px;
+    height: 70px;
+    margin-top: -50px;
+    margin-bottom:50px;
+}
+
+/* タイトルバー */
+#titlebar {
+    width: 500px;
+    height: 70px;
+    padding-top: 10px;
+    border-radius: 15px;
+    background: #9C9C9C;
+    transform: translatex(470px) translatey(-70px);
+}
+
+/* タイトルバーの文字 */
+.sectiontitle {
+    width: 500px;
+    height: 32px;
+    padding-top: 5px;
+    color: #FFFFFF;
+    font-family: "Corporate Logo ver3";
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* 左へ */
+#to_left {
+    width: 70px;
+    height: 70px;
+    border-radius: 17px;
+    translate: 370px 5px;
+    background: #9C9C9C;
+    clip-path: shape(
+    from 37.5% 4%,
+    curve to 62.5% 4% with 50% -4%,
+    line to 98% 71%,
+    curve to 87% 90% with 105% 90%,
+    line to 13% 90%,
+    curve to 2% 71% with -5% 90%,
+    close
+  );
+    rotate: -90deg;
+}
+#to_left a, #to_right a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* 右へ */
+#to_right {
+    width: 70px;
+    height: 70px;
+    border-radius: 17px;
+    translate: 1000px -145px;
+    background: #9C9C9C;
+    clip-path: shape(
+    from 37.5% 4%,
+    curve to 62.5% 4% with 50% -4%,
+    line to 98% 71%,
+    curve to 87% 90% with 105% 90%,
+    line to 13% 90%,
+    curve to 2% 71% with -5% 90%,
+    close
+  );
+    rotate: 90deg;
+}
+
+
+
+
+
+
+/* ---------- TOPに戻る ---------- */
+/* TOPボタン */
+#topbtn {
+    position: relative;
+    top: -40px;
+    left: -40px;
+}
+
+
+
+
+/* ----------- プロフィールカード ----------*/
+/* 詳細エリア左側 */
+.area_left {
+	width: 580px;
+	height: 760px;
+	border-radius: 25px;
+	background: #D9D9D9;
+    translate: 90px 0px;
+}
+
+
+/* 詳細エリア右側 */
+.area_right {
+	width: 580px;
+	height: 760px;
+	border-radius: 25px;
+	background: #D9D9D9;
+    translate: 770px -760px;
+}
+
+
+/* アイコン大 */
+img.area_icon {
+    width: 320px;
+    height: 320px;
+    border-radius: 160px;
+    translate: 137px 35px;
+}
+
+/* 名前スペース */
+.namebar {
+    width: 300px;
+    height: 60px;
+    border-radius: 15px;
+    background: #FFFFFF;
+    translate: 137px 55px;
+}
+
+/* 名前バーに書く名前 */
+.name {
+    width: 300px;
+    height: 32px;
+    padding-top: 5px;
+    color: #000000;
+    font-family: "Corporate Logo ver3";
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* 詳細テキストエリア */
+.textarea {
+    width: 500px;
+    height: 200px;
+    color: #000000;
+    font-family: "Noto Sans JP";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.8;
+    text-align: center;
+    translate: 40px 55px;
+}
+
+/* SNSアイコンエリア */
+.sns_icon_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;          /* アイコンの間隔（今の margin 15px × 2 と同じ） */
+    margin-top: 65px;
+    width: 580px;
+    height: 62px;
+}
+.sns_icon_area a {
+    display: block;     /* ← これで <a> が画像と同じ大きさになる */
+}
+
+/* SNSアイコン */
+.sns_icon {
+    display: block;     /* 画像の下の隙間をなくす */
+    width: 32px;
+    height: 32px;
+    margin: 0;
+}
+

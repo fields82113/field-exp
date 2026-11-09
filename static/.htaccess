@@ -1,0 +1,5 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+RewriteEngine on
+RewriteCond %{THE_REQUEST} ^.*/index.html
+RewriteRule ^(.*)index.html$ https://sample.com/$1 [R=301,L]
