@@ -436,3 +436,20 @@ img.area_icon {
     margin: 0;
 }
 
+/* ---------- ライブラリのリンクカード ---------- */
+.cardlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; width: 600px; }
+
+.cardlist a.card,
+.cardlist a.card:hover {
+  display: flex; gap: 24px; align-items: center;
+  padding: 24px; box-sizing: border-box;
+  background: #D9D9D9; border-radius: 25px;
+  color: #000; text-decoration: none;
+}
+.cardlist a.card:hover { background: #cfcfcf; }
+
+.card_thumb { flex: none; width: 90px; height:90px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; }
+.card_body { width: 500px; }
+.card_title { margin: 0 0 4px; font-size: 20px; line-height: 1.4; font-weight: 700; }
+.card_date { display: block; margin-bottom: 8px; font-size: 14px; color: #666; }
+.card_text { margin: 0; font-size: 16px; line-height: 1.6; }

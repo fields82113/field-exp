@@ -2,9 +2,18 @@
 <div class="contents"><h1 class="contents_title">{{ .Title }}</h1></div>
 <div class="contents_text">
   {{ .Content }}
-  <ul>
-    {{ range .Pages.ByDate.Reverse }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+  <ul class="cardlist">
+    {{ range .RegularPages.ByDate.Reverse }}
+    <li>
+      <a class="card" href="{{ .RelPermalink }}">
+        <img class="card_thumb" src="{{ .Params.image | default "/img/thumb_default.png" }}" alt="" loading="lazy">
+        <div class="card_body">
+          <h2 class="card_title">{{ .Title }}</h2>
+          <time class="card_date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+          <p class="card_text">{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 80 }}{{ end }}</p>
+        </div>
+      </a>
+    </li>
     {{ end }}
   </ul>
 </div>

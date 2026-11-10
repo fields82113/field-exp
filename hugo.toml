@@ -1,5 +1,5 @@
 baseURL = "https://field-exp.link/"
-languageCode = "ja"
+locale = "ja"
 defaultContentLanguage = "ja"
 title = "Field EXPandar!"
 
@@ -7,3 +7,5 @@ disableKinds = ["home", "taxonomy", "term", "rss", "sitemap"]
 
 [markup.goldmark.renderer]
   unsafe = true
+
+  hasCJKLanguage = true
