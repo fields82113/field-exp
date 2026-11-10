@@ -2,6 +2,6 @@
 <div class="contents"><h1 class="contents_title">{{ .Title }}</h1></div>
 <div class="contents_text">
   {{ .Content }}
-  <p><a href="/library/">ライブラリへ戻る</a></p>
+   <p><a href="{{ .Parent.RelPermalink }}">ライブラリへ戻る</a></p>
 </div>
 {{ end }}
