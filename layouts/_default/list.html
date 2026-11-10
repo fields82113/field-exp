@@ -1,0 +1,11 @@
+{{ define "main" }}
+<div class="contents"><h1 class="contents_title">{{ .Title }}</h1></div>
+<div class="contents_text">
+  {{ .Content }}
+  <ul>
+    {{ range .Pages.ByDate.Reverse }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
