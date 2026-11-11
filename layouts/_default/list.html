@@ -3,18 +3,27 @@
 <div class="contents_text">
   {{ .Content }}
   <ul class="cardlist">
-    {{ range .RegularPages.ByDate.Reverse }}
-    <li>
-      <a class="card" href="{{ .RelPermalink }}">
-        <img class="card_thumb" src="{{ .Params.image | default "/img/thumb_default.png" }}" alt="" loading="lazy">
-        <div class="card_body">
-          <h2 class="card_title">{{ .Title }}</h2>
-          <time class="card_date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
-          <p class="card_text">{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 80 }}{{ end }}</p>
-        </div>
-      </a>
-    </li>
+{{ range .RegularPages.ByDate.Reverse }}
+  {{ $thumb := "/img/thumb_default.png" }}
+  {{ $raw := .RawContent }}
+  {{ if .Params.image }}
+    {{ $thumb = .Params.image }}
+  {{ else }}
+    {{ with findRESubmatch `!\[[^\]]*\]\(\s*([^)\s]+)` $raw 1 }}
+      {{ $thumb = index (index . 0) 1 }}
     {{ end }}
+  {{ end }}
+  <li>
+    <a class="card" href="{{ .RelPermalink }}">
+      <img class="card_thumb" src="{{ $thumb }}" alt="" loading="lazy">
+      <div class="card_body">
+        <h2 class="card_title">{{ .Title }}</h2>
+        <time class="card_date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+        <p class="card_text">{{ with .Description }}{{ . }}{{ else }}{{ .Plain | truncate 100 }}{{ end }}</p>
+      </div>
+    </a>
+  </li>
+{{ end }}
   </ul>
 </div>
 {{ end }}

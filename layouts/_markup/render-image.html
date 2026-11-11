@@ -1,0 +1,3 @@
+<a href="{{ .Destination | safeURL }}" class="zoom" data-zoom>
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
+</a>

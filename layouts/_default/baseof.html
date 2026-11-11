@@ -12,9 +12,13 @@
   <link rel="stylesheet" href="/assets/css/default.css">
 </head>
 <body>
-  <div id="tile">
+  <div id="tile_scroll_enable">
     {{ partial "header.html" . }}
     {{ block "main" . }}{{ end }}
   </div>
+
+<dialog id="zoom" class="zoom_dialog"><img alt=""></dialog>
+<script src="/assets/js/zoom.js" defer></script>
+
 </body>
 </html>
