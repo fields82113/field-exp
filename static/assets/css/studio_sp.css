@@ -1,0 +1,111 @@
+/* studio用・スマホ用（〜767px）。studio.css と default_sp.css のあとに読み込む */
+
+/* 六角形の入れ物：左右に20pxの余白を残して、横3個が収まる大きさにする */
+#hexbox {
+  /* 3W + 2×隙間 = 画面幅 − 40px（隙間は幅の6/222） */
+  --hexw: min(150px, calc((100vw - 40px) / 3.0541));
+  --hexgap: calc(var(--hexw) * 6 / 222);
+  --hexpitch: calc(var(--hexw) + var(--hexgap));
+
+  display: grid;
+  grid-template-columns: repeat(6, calc(var(--hexpitch) / 2));
+  justify-content: center;
+  width: auto;
+  height: auto;
+  margin-top: 37px;
+}
+
+#link01, #link02, #link03, #link04, #link05, #link06, #link_center {
+  transform: none;
+  width: var(--hexw);
+  justify-self: center;
+}
+
+/* 配置（行 / 列 の開始 / 終了）
+   1段目: 左上 link06・右上 link05
+   2段目: 音MAD link01・中央 link_center・ポートフォリオ link04
+   3段目: 紀行動画 link02・同人 link03 */
+#link06      { grid-area: 1 / 2 / 2 / 4; }
+#link05      { grid-area: 1 / 4 / 2 / 6; }
+#link01      { grid-area: 2 / 1 / 3 / 3; }
+#link_center { grid-area: 2 / 3 / 3 / 5; }
+#link04      { grid-area: 2 / 5 / 3 / 7; }
+#link02      { grid-area: 3 / 2 / 4 / 4; }
+#link03      { grid-area: 3 / 4 / 4 / 6; }
+
+/* 2段目・3段目は、上の段に重ねる（段の間隔は中心間距離の√3/2） */
+#link01, #link02, #link03, #link04, #link_center {
+  margin-top: calc(var(--hexw) * -0.2887 + var(--hexgap) * 0.866);
+}
+
+#hexbox .hexbtn,
+#hexbox .hexbtn_grayout01,
+#hexbox .hexbtn_grayout02 {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 222 / 256;
+}
+
+#hexbox .menu-title {
+  width: auto;
+  font-size: calc(var(--hexw) * 0.2);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+#hexbox .menu-title_middle {
+  width: auto;
+  font-size: calc(var(--hexw) * 0.125);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+
+/* ==========================================================
+   サムネイル：320pxで2列、360px以上で3列
+   ========================================================== */
+.contents:has(.thumb-container) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+@media (min-width: 360px) {
+  .contents:has(.thumb-container) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.contents:has(.thumb-container) .contents_title {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+.thumb-container {
+  width: auto;
+  height: auto;
+}
+.thumb-container a { display: block; }
+.thumb {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+}
+
+/* ==========================================================
+   ポップアップ：幅300px固定
+   ========================================================== */
+/* 枠・閉じるボタンの共通指定は studio.css にある。ここは、スマホ用の大きさだけ */
+#popup {
+  max-height: calc(100% - 20px);
+}
+.popup_content {
+  box-sizing: border-box;
+  width: 300px;
+  max-width: none;
+  padding: 10px 20px;
+  font-size: 11px;
+}
+.popup_content img {
+  max-width: 100%;
+  height: auto;
+}

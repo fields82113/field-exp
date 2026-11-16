@@ -1,0 +1,317 @@
+/* スマホ用（〜767px）。default.css のあとに読み込む。基準: iPhone SE 320px
+   ここには、PC版から変える部分だけを書く */
+
+:root {
+  /* 六角形の幅。320pxで105px、画面幅に比例して大きくなる（上限150px） */
+  --hexw: clamp(105px, 32.8vw, 150px);
+  /* 六角形どうしの隙間。デスクトップ（幅222px・隙間6px）と同じ比率 */
+  --hexgap: calc(var(--hexw) * 6 / 222);
+  /* 六角形の中心間の距離 */
+  --hexpitch: calc(var(--hexw) + var(--hexgap));
+  /* バナーの高さ（320pxで62px、幅に比例） */
+  --bannerh: calc(100vw * 62 / 320);
+}
+
+body { margin: 0; }
+
+/* ---------- 枠 ---------- */
+#tile,
+#tile_scroll_enable {
+  width: auto;
+  height: auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: visible;   /* 枠の中のスクロールはやめて、ページ全体でスクロールする */
+}
+
+/* ---------- トップページ ---------- */
+#tile:has(#menu01) {
+  display: grid;
+  /* 両端の1frは余白。六角形は中央の4列（1列＝中心間距離の半分） */
+  grid-template-columns: 1fr repeat(4, calc(var(--hexpitch) / 2)) 1fr;
+  align-content: start;
+  padding-top: var(--bannerh);   /* 固定バナーの高さぶん空ける */
+  padding-bottom: 9px;
+}
+
+/* バナー：上部固定、背景 #88CEFF の不透明度50%（ロゴ画像は不透明のまま） */
+.title_img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: var(--bannerh);
+  margin: 0;
+  background:
+    url(../../img/field_expandar_logo_mb_S.png) center / 100% auto no-repeat,
+    rgb(136 206 255 / 0.5);
+}
+
+/* 見出しと本文：ブロックを中央に置く（幅は320pxで左右11pxの余白）。文字は左揃え */
+.subtitile {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(298px, calc(100% - 22px));
+  height: auto;
+  margin: 9px 0 0;
+  font-size: 17px;
+  line-height: 24px;
+}
+.introduction {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(298px, calc(100% - 22px));
+  height: auto;
+  margin: 12px 0 5px;
+  font-size: 13px;
+  line-height: 21px;
+}
+
+/* 六角形：蜂の巣状（上1・中2・下1）。段の間隔は中心間距離の√3/2 */
+#menu01, #menu02, #menu03, #menu04 {
+  transform: none;
+  width: var(--hexw);
+  justify-self: center;
+}
+#menu01 { grid-column: 3 / 5; }
+#menu02 { grid-column: 2 / 4; }
+#menu03 { grid-column: 4 / 6; }
+#menu04 { grid-column: 3 / 5; }
+#menu02, #menu03, #menu04 {
+  margin-top: calc(var(--hexw) * -0.2887 + var(--hexgap) * 0.866);
+}
+
+.hexbtn {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 222 / 256;
+}
+.menu-title {
+  width: auto;
+  font-size: calc(var(--hexw) * 0.17);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.menu-sub {
+  width: auto;
+  font-size: calc(var(--hexw) * 0.08);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+
+/* ==========================================================
+   各ページ共通のヘッダー（◀ タイトルバー ▶）と TOPボタン
+   ========================================================== */
+
+/* ヘッダー：上部固定、バナーと同じ帯（#88CEFF の不透明度50%） */
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  height: var(--bannerh);
+  margin: 0;
+  padding: 0 4px;
+  background: rgb(136 206 255 / 0.5);
+}
+
+/* タイトルバー（320pxで幅230px・高さ36px） */
+#titlebar {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  width: auto;
+  height: 36px;
+  padding: 0;
+  border-radius: 10px;
+  transform: none;
+}
+.sectiontitle {
+  width: auto;
+  height: auto;
+  padding: 0;
+  font-size: 15.5px;
+  line-height: 1.2;
+}
+
+/* 左右の三角（32px角。形・回転は default.css のまま） */
+#to_left, #to_right {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  translate: none;
+}
+
+/* TOPボタン：右下に固定 */
+#topbtn {
+  position: fixed;
+  top: auto;
+  left: auto;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+}
+#topbtn img { display: block; }
+
+/* ---------- ヘッダーのあるページの枠 ---------- */
+#tile:has(#header),
+#tile_scroll_enable:has(#header) {
+  padding-top: calc(var(--bannerh) + 22px);   /* 固定ヘッダーの下に22px */
+  padding-bottom: 62px;                       /* TOPボタンに隠れない余白 */
+}
+
+/* ==========================================================
+   identity：プロフィールカード（1枚ずつ縦に並べる）
+   ========================================================== */
+.area_left,
+.area_right {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  height: auto;
+  margin: 0 auto 22px;
+  padding-bottom: 10.5px;
+  translate: none;
+}
+
+img.area_icon {
+  width: 160px;
+  height: 160px;
+  margin-top: 11px;
+  border-radius: 80px;
+  translate: none;
+}
+
+.namebar {
+  width: 160px;
+  height: 32px;
+  margin-top: 9px;
+  border-radius: 8px;
+  translate: none;
+}
+.name {
+  width: auto;
+  height: auto;
+  padding: 0;
+  font-size: 23px;
+  line-height: 32px;
+}
+
+.textarea {
+  width: auto;
+  height: auto;
+  margin: 15px 0 0;
+  font-size: 9.4px;
+  line-height: 16.2px;
+  translate: none;
+}
+
+.sns_icon_area {
+  width: auto;
+  height: auto;
+  margin-top: 31px;
+  gap: 11.5px;
+}
+.sns_icon {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* ==========================================================
+   本文ブロック・ページ説明（studio・libraryなど共通）
+   ========================================================== */
+.detail {
+  width: auto;
+  height: auto;
+  margin: -8px 10px 0;
+  transform: none;
+  font-size: 11px;
+  line-height: 21px;
+}
+.contents,
+.contents_text {
+  width: auto;
+  margin: 20px 10px;
+}
+
+/* 記事本文の文字：トップページの説明文と同じ 13px・行間21px */
+.contents_text {
+  font-size: 13px;
+  line-height: 21px;
+}
+h1.contents_title,
+h2.contents_title,
+h3.contents_title {
+  width: auto;
+}
+
+/* ==========================================================
+   library：記事一覧のリンクカード
+   画面に収める（最大幅はデスクトップと同じ600px）・高さは固定
+   ========================================================== */
+.cardlist {
+  width: auto;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: 12px;
+}
+
+.cardlist a.card,
+.cardlist a.card:hover {
+  height: 120px;          /* 固定 */
+  padding: 12px;
+  gap: 12px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.card_thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+}
+
+.card_body {
+  flex: 1;
+  width: auto;
+  min-width: 0;           /* 長い文字で、カードの幅が広がらないように */
+}
+
+/* 長い文字は、行数で切って「…」にする（高さが変わらない） */
+.card_title,
+.card_text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card_title {
+  margin: 0 0 2px;
+  font-size: 15px;
+  line-height: 1.4;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+.card_date {
+  margin-bottom: 4px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+.card_text {
+  font-size: 11px;
+  line-height: 1.5;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}

@@ -1,3 +1,4 @@
+/* トップページのポップアップ用 */
 /* ポップアップ全体（普段は非表示） */
 .popup {
     display: none;
@@ -29,6 +30,8 @@
     border-radius: 25px;
     background: #D9D9D9;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    scrollbar-width: thin;                 /* 細いスクロールバーにする（矢印ボタンもなくなる） */
+    scrollbar-color: #9C9C9C transparent;  /* つまみは灰色、背景の帯は透明 */
 }
 .popup_title {
     margin: 0 0 20px;

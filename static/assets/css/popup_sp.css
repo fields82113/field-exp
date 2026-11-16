@@ -1,0 +1,30 @@
+/* トップページのポップアップ用 */
+/* ポップアップ（スマホ用・〜767px）。popup.css のあとに読み込む。
+   デザインはそのまま、大きさだけ画面の80%以内にする */
+ 
+.popup_inner {
+  box-sizing: border-box;   /* 余白（padding）を含めた大きさで、80%にする */
+  width: min(560px, 80vw);
+  max-width: none;
+  max-height: 80vh;
+  max-height: 80dvh;        /* 対応していない古いiOSでは、上の80vhが使われる */
+  overflow-y: auto;         /* はみ出す場合は、スクロールバーが出る */
+  overscroll-behavior: contain;   /* 端までスクロールしても、背景のページが動かない */
+  scrollbar-width: thin;                 /* 細いスクロールバーにする（矢印ボタンもなくなる） */
+  scrollbar-color: #9C9C9C transparent;  /* つまみは灰色、背景の帯は透明 */
+}
+
+.popup_title {
+  font-size: 17px;
+  line-height: 24px;
+}
+.popup_text {
+  font-size: 13px;
+  line-height: 21px;
+}
+
+@supports not (scrollbar-width: thin) {
+  .popup_inner::-webkit-scrollbar { width: 8px; }
+  .popup_inner::-webkit-scrollbar-track { background: transparent; margin: 28px 0; }
+  .popup_inner::-webkit-scrollbar-thumb { background: #9C9C9C; border-radius: 4px; }
+}
