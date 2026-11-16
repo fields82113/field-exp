@@ -356,7 +356,7 @@ h3.contents_title {
 #topbtn {
     position: relative;
     top: -40px;
-    left: -40px;
+    left: 10px;   /* タイルの左右の余白を0にしたので、-40px → 10px（見た目の位置は元と同じ） */
 }
 
 
