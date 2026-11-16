@@ -1,0 +1,18 @@
+{{/* 記事の上のナビ：< 次の記事 ｜ 記事一覧に戻る ｜ 前の記事 >
+     同じカテゴリの記事を新着順に並べたとき、次(=1つ古い)・前(=1つ新しい)。ない側はリンクを出さない */}}
+{{ $lib := site.GetPage "/main/library" }}
+{{ $pages := $lib.RegularPages.ByDate.Reverse }}
+{{ with .Params.category }}{{ $pages = where $pages "Params.category" . }}{{ end }}
+{{ $self := . }}
+{{ $idx := -1 }}
+{{ range $i, $p := $pages }}{{ if eq $p.RelPermalink $self.RelPermalink }}{{ $idx = $i }}{{ end }}{{ end }}
+{{ $next := "" }}{{ $prev := "" }}
+{{ if ge $idx 0 }}
+  {{ if lt (add $idx 1) (len $pages) }}{{ $next = index $pages (add $idx 1) }}{{ end }}
+  {{ if gt $idx 0 }}{{ $prev = index $pages (sub $idx 1) }}{{ end }}
+{{ end }}
+<nav class="contents postnav" aria-label="記事ナビゲーション">
+  <span class="postnav_next">{{ with $next }}<a href="{{ .RelPermalink }}" rel="next" title="{{ .Title }}">&lt; 次の記事</a>{{ end }}</span>
+  <a class="postnav_list" href="{{ $lib.RelPermalink }}">記事一覧に戻る</a>
+  <span class="postnav_prev">{{ with $prev }}<a href="{{ .RelPermalink }}" rel="prev" title="{{ .Title }}">前の記事 &gt;</a>{{ end }}</span>
+</nav>

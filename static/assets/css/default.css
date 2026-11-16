@@ -19,6 +19,15 @@ body {
     font-family: 'Noto Sans JP';
 }
 
+.br-pc {
+  display: inline; /* PCでは改行する */
+}
+.br-sp {
+  display: none;   /* スマホ用改行は隠す */
+}
+
+
+
 a:not(:has(.menu-title, .menu-title_middle)) {
     text-decoration: underline;
     text-underline-offset: -50%;
@@ -67,7 +76,7 @@ h3 {
     margin-right: auto;
     margin-top: 50px;
     margin-bottom: 50px;
-    padding: 50px;
+    padding: 50px 0;   /* 左右は0：座標はタイルの左端を基準に作ってあるため */
 }
 
 /* タイル（スクロール表示が見込まれる） */
@@ -84,7 +93,7 @@ h3 {
     margin-right: auto;
     margin-top: 50px;
     margin-bottom: 50px;
-    padding: 50px;
+    padding: 50px 0;   /* 左右は0：座標はタイルの左端を基準に作ってあるため */
     overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: thin;
@@ -150,8 +159,8 @@ h3 {
     width: 1024px;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 230px;
-    margin-right: 230px;
+    margin-left: 208px;   /* (1440 - 1024) / 2 で中央 */
+    margin-right: 208px;
     color: #000000;
     font-family: "Noto Sans JP";
     font-size: 16px;
@@ -166,8 +175,8 @@ h3 {
     width: 1024px;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 230px;
-    margin-right: 230px;
+    margin-left: 208px;   /* (1440 - 1024) / 2 で中央 */
+    margin-right: 208px;
     color: #000000;
     font-family: "Noto Sans JP";
     font-size: 16px;
@@ -458,8 +467,8 @@ img.area_icon {
 
 
 /* ---------- 記事の画像ポップアップ ---------- */
-/* 記事中の画像：400x400以内、縦横比そのまま */
-.post img { max-width: 400px; max-height: 400px; width: auto; height: auto; }
+/* 記事中の画像：640x640以内、縦横比そのまま */
+.post img { max-width: 640px; max-height: 640px; width: auto; height: auto; }
 
 .post a.zoom, .post a.zoom:hover {
   display: inline-block; line-height: 0; vertical-align: top;
@@ -486,3 +495,48 @@ hr.topic_end {
     height: 6px;
     background-color: #000000;
 }
+
+
+/* ---------- ライブラリ：カテゴリ見出し・折りたたみ ---------- */
+.cat_title { margin: 40px 0 16px; font-size: 24px; scroll-margin-top: 20px; }
+.cat_title:first-child { margin-top: 0; }
+.card_title { border-bottom: 3px solid #000000; }
+
+/* カテゴリごとの折りたたみ（<details>） */
+details.cat { margin-top: 24px; }
+details.cat > summary { cursor: pointer; list-style: none; }
+details.cat > summary::-webkit-details-marker { display: none; }
+details.cat > summary .cat_title { display: flex; align-items: center; margin: 0 0 16px; }
+details.cat > summary .cat_title::before {   /* ▶ ／ 開くと▼ */
+  content: ""; flex: none; width: 0; height: 0; margin-right: 12px;
+  border-left: 12px solid #000; border-top: 8px solid transparent; border-bottom: 8px solid transparent;
+  transition: transform .15s;
+}
+details.cat[open] > summary .cat_title::before { transform: rotate(90deg); }
+.cat_count { margin-left: 10px; font-size: 16px; font-weight: 500; color: #666; }
+
+/* 「もっと見る」 */
+.more { margin: 16px 0 0; width: 600px; text-align: center; }
+.more a.more_link, .more a.more_link:hover {
+  display: block; box-sizing: border-box; padding: 12px;
+  border-radius: 25px; background: #9C9C9C; color: #fff; text-decoration: none;
+  font-family: "Corporate Logo ver3"; font-size: 20px; font-weight: 500;
+}
+.more a.more_link:hover { background: #8a8a8a; }
+
+/* カテゴリページ：続きの読み込み前のカード */
+.more_hidden { display: none; }
+#more_sentinel { height: 1px; }
+
+
+/* ---------- 記事の上のナビ（< 次の記事 ｜ 記事一覧に戻る ｜ 前の記事 >） ---------- */
+.contents.postnav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+.postnav_next { justify-self: start; }
+.postnav_prev { justify-self: end; }

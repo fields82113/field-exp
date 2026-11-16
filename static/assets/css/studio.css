@@ -131,3 +131,4 @@
 #popup .popup_close:hover {
     background: rgba(0, 0, 0, 0.1);
 }
+#popup .popup_content { padding-top: 44px; }

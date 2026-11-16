@@ -1,0 +1,16 @@
+{{ $thumb := "/img/thumb_default.png" }}
+{{ if .Params.image }}
+  {{ $thumb = .Params.image }}
+{{ else }}
+  {{ with findRESubmatch `!\[[^\]]*\]\(\s*([^)\s]+)` .RawContent 1 }}
+    {{ $thumb = index (index . 0) 1 }}
+  {{ end }}
+{{ end }}
+<a class="card" href="{{ .RelPermalink }}">
+  <img class="card_thumb" src="{{ $thumb }}" alt="" loading="lazy">
+  <div class="card_body">
+    <h3 class="card_title">{{ .Title }}</h3>
+    <time class="card_date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+    <p class="card_text">{{ with .Description }}{{ . }}{{ else }}{{ .Plain | truncate 100 }}{{ end }}</p>
+  </div>
+</a>

@@ -48,13 +48,13 @@
 
 #hexbox .menu-title {
   width: auto;
-  font-size: calc(var(--hexw) * 0.2);
+  font-size: calc(var(--hexw) * 0.25);
   line-height: 1.4;
   white-space: nowrap;
 }
 #hexbox .menu-title_middle {
   width: auto;
-  font-size: calc(var(--hexw) * 0.125);
+  font-size: calc(var(--hexw) * 0.2);
   line-height: 1.4;
   white-space: nowrap;
 }
@@ -103,7 +103,7 @@
   width: 300px;
   max-width: none;
   padding: 10px 20px;
-  font-size: 11px;
+  font-size: 16px;
 }
 .popup_content img {
   max-width: 100%;

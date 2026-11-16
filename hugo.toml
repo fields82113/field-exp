@@ -9,3 +9,19 @@ disableKinds = ["home", "taxonomy", "term", "rss", "sitemap"]
   unsafe = true
 
   hasCJKLanguage = true
+# ライブラリのカテゴリ（この並び順が一覧の表示順・ヘッダー矢印の遷移順になります）
+[[params.categories]]
+  name = "趣味"
+  slug = "hobby"
+[[params.categories]]
+  name = "創作手法"
+  slug = "making"
+[[params.categories]]
+  name = "ネット遍歴"
+  slug = "internet"
+[[params.categories]]
+  name = "ツールとデバイス"
+  slug = "tool-and-device"
+[[params.categories]]
+  name = "未分類"
+  slug = "unknown"

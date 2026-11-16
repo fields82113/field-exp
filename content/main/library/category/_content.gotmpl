@@ -1,0 +1,3 @@
+{{ range site.Params.categories }}
+  {{ $.AddPage (dict "path" .slug "title" .name "type" "category" "params" (dict "category" .name)) }}
+{{ end }}

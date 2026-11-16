@@ -14,6 +14,14 @@
 
 body { margin: 0; }
 
+.br-pc {
+  display: none;   /* PC用改行を消す */
+}
+.br-sp {
+  display: inline; /* スマホでは改行する */
+}
+
+
 /* ---------- 枠 ---------- */
 #tile,
 #tile_scroll_enable {
@@ -56,9 +64,9 @@ body { margin: 0; }
   justify-self: center;
   width: min(298px, calc(100% - 22px));
   height: auto;
-  margin: 9px 0 0;
-  font-size: 17px;
-  line-height: 24px;
+  margin: 20px 0 10px;
+  font-size: 24px;
+  line-height: 1.2;
 }
 .introduction {
   grid-column: 1 / -1;
@@ -66,8 +74,8 @@ body { margin: 0; }
   width: min(298px, calc(100% - 22px));
   height: auto;
   margin: 12px 0 5px;
-  font-size: 13px;
-  line-height: 21px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 /* 六角形：蜂の巣状（上1・中2・下1）。段の間隔は中心間距離の√3/2 */
@@ -91,13 +99,13 @@ body { margin: 0; }
 }
 .menu-title {
   width: auto;
-  font-size: calc(var(--hexw) * 0.17);
+  font-size: calc(var(--hexw) * 0.25);
   line-height: 1.4;
   white-space: nowrap;
 }
 .menu-sub {
   width: auto;
-  font-size: calc(var(--hexw) * 0.08);
+  font-size: calc(var(--hexw) * 0.1);
   line-height: 1.4;
   white-space: nowrap;
 }
@@ -140,7 +148,7 @@ body { margin: 0; }
   width: auto;
   height: auto;
   padding: 0;
-  font-size: 15.5px;
+  font-size: 18px;
   line-height: 1.2;
 }
 
@@ -179,7 +187,8 @@ body { margin: 0; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 280px;
+  width: auto;
+  max-width: 360px;
   height: auto;
   margin: 0 auto 22px;
   padding-bottom: 10.5px;
@@ -206,15 +215,15 @@ img.area_icon {
   height: auto;
   padding: 0;
   font-size: 23px;
-  line-height: 32px;
+  line-height: 1.2;
 }
 
 .textarea {
   width: auto;
   height: auto;
   margin: 15px 0 0;
-  font-size: 9.4px;
-  line-height: 16.2px;
+  font-size: 16px;
+  line-height: 1.5;
   translate: none;
 }
 
@@ -238,8 +247,8 @@ img.area_icon {
   height: auto;
   margin: -8px 10px 0;
   transform: none;
-  font-size: 11px;
-  line-height: 21px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 .contents,
 .contents_text {
@@ -247,15 +256,15 @@ img.area_icon {
   margin: 20px 10px;
 }
 
-/* 記事本文の文字：トップページの説明文と同じ 13px・行間21px */
+/* 記事本文の文字：PCと同じ 16px・行間1.5 */
 .contents_text {
-  font-size: 13px;
-  line-height: 21px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 h1.contents_title,
 h2.contents_title,
 h3.contents_title {
-  width: auto;
+  width: 100%;   /* flexの子はautoだと文字幅に縮み、下線が端まで届かない */
 }
 
 /* ==========================================================
@@ -299,19 +308,35 @@ h3.contents_title {
 }
 .card_title {
   margin: 0 0 2px;
-  font-size: 15px;
-  line-height: 1.4;
+  font-size: 18px;
+  line-height: 1.2;
   -webkit-line-clamp: 2;
   line-clamp: 2;
 }
 .card_date {
   margin-bottom: 4px;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.2;
 }
 .card_text {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
   -webkit-line-clamp: 2;
   line-clamp: 2;
 }
+
+/* 「もっと見る」 */
+.more { width: auto; max-width: 600px; margin-left: auto; margin-right: auto; }
+.more a.more_link, .more a.more_link:hover { border-radius: 20px; font-size: 16px; }
+details.cat > summary .cat_title { font-size: 20px; }
+
+/* 記事の上のナビ */
+.contents.postnav {
+  gap: 8px;
+  font-size: 13px;
+}
+
+
+/* ---------- 記事の画像ポップアップ ---------- */
+/* 記事中の画像：300x300以内、縦横比そのまま */
+.post img { max-width: 300px; max-height: 300px; width: auto; height: auto; }

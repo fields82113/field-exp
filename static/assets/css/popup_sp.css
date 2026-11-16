@@ -4,7 +4,7 @@
  
 .popup_inner {
   box-sizing: border-box;   /* 余白（padding）を含めた大きさで、80%にする */
-  width: min(560px, 80vw);
+  width: min(560px, 90vw);
   max-width: none;
   max-height: 80vh;
   max-height: 80dvh;        /* 対応していない古いiOSでは、上の80vhが使われる */
@@ -15,12 +15,12 @@
 }
 
 .popup_title {
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 20px;
+  line-height: 1.2;
 }
 .popup_text {
-  font-size: 13px;
-  line-height: 21px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 @supports not (scrollbar-width: thin) {

@@ -2,28 +2,28 @@
 <div class="contents"><h1 class="contents_title">{{ .Title }}</h1></div>
 <div class="contents_text">
   {{ .Content }}
+  {{ $all := .RegularPages.ByDate.Reverse }}
+
+  <h2 class="cat_title" id="latest">新着</h2>
   <ul class="cardlist">
-{{ range .RegularPages.ByDate.Reverse }}
-  {{ $thumb := "/img/thumb_default.png" }}
-  {{ $raw := .RawContent }}
-  {{ if .Params.image }}
-    {{ $thumb = .Params.image }}
-  {{ else }}
-    {{ with findRESubmatch `!\[[^\]]*\]\(\s*([^)\s]+)` $raw 1 }}
-      {{ $thumb = index (index . 0) 1 }}
+    {{ range first 3 $all }}<li>{{ partial "card.html" . }}</li>{{ end }}
+  </ul>
+
+  {{ $libUrl := .RelPermalink }}
+  {{ range site.Params.categories }}
+    {{ $cat := . }}
+    {{ $pages := where $all "Params.category" $cat.name }}
+    {{ if $pages }}
+  <details class="cat" id="cat-{{ $cat.slug }}">
+    <summary><h2 class="cat_title">{{ $cat.name }}<span class="cat_count">{{ len $pages }}</span></h2></summary>
+    <ul class="cardlist">
+      {{ range first 5 $pages }}<li>{{ partial "card.html" . }}</li>{{ end }}
+    </ul>
+    {{ if gt (len $pages) 5 }}
+    <p class="more"><a class="more_link" href="{{ $libUrl }}category/{{ $cat.slug }}/">もっと見る（{{ len $pages }}件）</a></p>
+    {{ end }}
+  </details>
     {{ end }}
   {{ end }}
-  <li>
-    <a class="card" href="{{ .RelPermalink }}">
-      <img class="card_thumb" src="{{ $thumb }}" alt="" loading="lazy">
-      <div class="card_body">
-        <h2 class="card_title">{{ .Title }}</h2>
-        <time class="card_date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
-        <p class="card_text">{{ with .Description }}{{ . }}{{ else }}{{ .Plain | truncate 100 }}{{ end }}</p>
-      </div>
-    </a>
-  </li>
-{{ end }}
-  </ul>
 </div>
 {{ end }}

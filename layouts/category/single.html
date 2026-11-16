@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{ $name := .Params.category }}
+{{ $all := (site.GetPage "/main/library").RegularPages.ByDate.Reverse }}
+{{ $pages := where $all "Params.category" $name }}
+<div class="contents"><h1 class="contents_title">{{ $name }}</h1></div>
+<div class="contents_text">
+  <ul class="cardlist" id="cardlist_more" data-step="10">
+    {{ range $i, $p := $pages }}<li{{ if ge $i 10 }} class="more_hidden"{{ end }}>{{ partial "card.html" $p }}</li>{{ end }}
+  </ul>
+  <div id="more_sentinel" aria-hidden="true"></div>
+  <noscript><style>.more_hidden{display:list-item !important}</style></noscript>
+  <hr class="topic_end">
+  <p><a href="{{ (site.GetPage "/main/library").RelPermalink }}">ライブラリへ戻る</a></p>
+</div>
+<script src="/assets/js/cardlist_more.js"></script>
+{{ end }}

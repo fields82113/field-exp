@@ -1,7 +1,8 @@
 +++
-title = "当サイト Field EXPandar! の制作工程"
+title = "当サイト Field EXPandar! の制作行程"
 date = 2026-11-10T22:00:00+09:00
 description = "このWebサイトの制作情報"
+category = "ネット遍歴"
 +++
 
 ## 期間
