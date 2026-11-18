@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- 他のページと同じ値にする -->
   <title>{{ .Title }}｜{{ site.Title }}</title>
   {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+
   <link rel="canonical" href="{{ .Permalink }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
